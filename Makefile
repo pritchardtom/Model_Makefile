@@ -4,10 +4,10 @@
 USE_ICC = 0
 usePARDISO = 1
 useGREATWHITE = 0
-MODEL_INCLUDE =../../../..
-GREATWHITE_INCLUDE= $(MODEL_INCLUDE)/../GreatWhite
-EIGEN_INCLUDE =/usr/local/include
-MKL_INCLUDE=/opt/intel/mkl/include
+MODEL_INCLUDE = /home/s.t.d.pritchard/local_builds/Model
+#GREATWHITE_INCLUDE= $(MODEL_INCLUDE)/../GreatWhite
+EIGEN_INCLUDE = /apps/libraries/eigen/3.3.7/el7/AVX512/gnu-8.1/include/eigen3
+MKL_INCLUDE = /apps/compilers/intel/2018.3/compilers_and_libraries/linux/mkl/include
 
 
 ##########################################################
@@ -18,7 +18,7 @@ IDIR += -I./
 IDIR += -I$(all_header_dir)
 #IDIR += -I$(MODEL_INCLUDE)
 IDIR += -I$(EIGEN_INCLUDE)
-IDIR += -I$(GREATWHITE_INCLUDE)
+#IDIR += -I$(GREATWHITE_INCLUDE)
 
 ##########################################################
 # COMPILER SETTINGS - DO NOT EDIT-
@@ -73,7 +73,7 @@ ifeq ($(usePARDISO), 1)
 	endif
 
 	ifeq ($(OS),Linux)
-		MKL_LIB=/opt/intel/mkl/lib/intel64
+		MKL_LIB=/apps/compilers/intel/2018.3/compilers_and_libraries/linux/mkl/lib/intel64_lin/
 		LIBS += -L $(MKL_LIB)
 		ifeq ($(USE_ICC), 1)
 			LIBS += -Wl,--start-group -lmkl_intel_lp64 -lmkl_core -lmkl_intel_thread -Wl,--end-group
